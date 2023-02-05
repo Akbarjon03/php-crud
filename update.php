@@ -1,13 +1,21 @@
 <?php
     include './connect.php';
+    $id = $_GET ['update_id'];
+    $sql = "Select * from `crud` where id=$id";
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_row($result);
+    // $name = $row['name'];
+    // $email = $row['email'];
+    // $mobile = $row['mobile'];
+    // $password = $row['password'];
+
     if (isset($_POST['submit'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $mobile = $_POST['mobile'];
         $password = $_POST['password'];
 
-        $sql = "insert into `crud`(name, email, mobile, password)
-        values('$name', '$email', '$mobile', '$password')";
+        $sql = "update `crud` set id='$id', name='$name', email='$email', mobile='$mobile', password='$password' where id=$id";
         $result = mysqli_query($con, $sql);
         if ($result) {
             header('location:display.php');
@@ -45,7 +53,7 @@
                 <label>Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Your password" required autocomplete="off">
             </div>
-            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit">Update</button>
         </form>
         </div>
     </body>
