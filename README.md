@@ -1,0 +1,8 @@
+
+# PHP CRUD
+
+- CREATE
+- READ
+- UPDATE
+- DELETE
+
